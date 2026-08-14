@@ -1,0 +1,1 @@
+document.getElementById('year').textContent=new Date().getFullYear();function submitForm(e){e.preventDefault();document.getElementById('msg').textContent=' Thanks! Your enquiry is ready to connect to your email or CRM.';e.target.reset();}
