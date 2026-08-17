@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://puskarqtonix-pixel.github.io/Ragner-website/sitemap.xml
