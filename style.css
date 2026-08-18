@@ -5,3 +5,5 @@
 .instagram-icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#6f43d6,#db3c78,#f0a236);font-size:22px;color:#fff;font-weight:900}
 .founder-social small{display:block;color:#72869c;font-size:8px;letter-spacing:1.4px}
 .founder-social strong{display:block;color:#fff;font-size:13px}
+
+.breadcrumb{max-width:1500px;margin:auto;padding:24px 7% 0;color:#71859b;font-size:12px;display:flex;gap:9px}.breadcrumb a,.related-links a{color:#56aaff}.entity-section strong{color:#f4f7fb}.article-body{max-width:900px}.article-body h2{font-size:32px;margin-top:45px}.article-body p{font-size:17px;color:#a7b4c4}.article-cta{margin-top:55px;padding:28px;border:1px solid #274661;border-radius:16px;background:#071426}
