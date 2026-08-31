@@ -30,8 +30,12 @@
 
     <section class="form-card">
       <h2>PROJECT DETAILS</h2>
-      <p class="note">Fill in the details below. The form is visible and ready; connect your preferred email/form endpoint before publishing if you want submissions delivered automatically.</p>
-      <form id="projectForm">
+      <p class="note">Fill in the details below. Submissions from this form are configured to be delivered to puskardas662@gmail.com.</p>
+      <form id="projectForm" action="https://formsubmit.co/puskardas662@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Ragner Project Request">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_autoresponse" value="Thank you for contacting Ragner. We have received your request and will get back to you soon.">
         <div class="form-grid">
           <div class="field"><label for="name">NAME *</label><input id="name" name="name" required placeholder="Your name"></div>
           <div class="field"><label for="business">BUSINESS / COMPANY</label><input id="business" name="business" placeholder="Business name"></div>
@@ -59,11 +63,9 @@
 <script>
 const m=document.querySelector('.menu'),n=document.querySelector('header nav');
 if(m&&n){m.addEventListener('click',()=>{const o=n.style.display==='flex';n.style.display=o?'none':'flex';if(!o){Object.assign(n.style,{position:'absolute',top:'64px',left:'0',right:'0',padding:'22px 4vw',background:'#02060df8',flexDirection:'column',gap:'18px'});}});}
-document.getElementById('projectForm').addEventListener('submit',function(e){
-  e.preventDefault();
+document.getElementById('projectForm').addEventListener('submit',function(){
   const s=document.getElementById('formStatus');
-  s.style.display='block';
-  s.innerHTML='<strong>Form design is working.</strong><br>To receive these submissions by email, connect this form to your Ragner email address or a form service such as Formspree/FormSubmit. No submission was sent yet.';
+  if(s){s.style.display='block';s.innerHTML='<strong>Sending your request…</strong><br>Please wait a moment.';}
 });
 </script>
 </body></html>
