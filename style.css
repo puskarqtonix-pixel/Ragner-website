@@ -13,3 +13,32 @@
 .site-footer{padding:58px 4.5vw;display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:50px;border-top:1px solid #172438}.site-footer h4{font-size:12px}.site-footer p,.site-footer a{font-size:13px;color:#8f9cad;line-height:1.7}.site-footer>div>a:not(.site-logo){display:block;margin:7px 0}.copyright{padding:18px 4.5vw;border-top:1px solid #172438;color:#68798d;font-size:11px}
 @media(max-width:900px){.site-nav,.header-cta{display:none}.mobile-menu{display:block}.card-grid,.form-grid{grid-template-columns:1fr 1fr}.two-col{grid-template-columns:1fr}.site-footer{grid-template-columns:1fr 1fr}.home-hero{overflow-x:auto}.home-hero img{min-width:980px}.hero-hotspots{min-width:980px}}
 @media(max-width:580px){.card-grid,.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.site-footer{grid-template-columns:1fr}.cta-section{flex-direction:column;align-items:flex-start}}
+
+
+/* Qtonix-like functionality/content structure while preserving Ragner blue layout */
+.site-nav .nav-group{position:relative}
+.site-nav .nav-group>a{display:flex;align-items:center;gap:5px}
+.site-nav .dropdown{
+  display:none;position:absolute;top:26px;left:0;min-width:260px;
+  background:#050c16;border:1px solid #23364f;padding:10px;
+  box-shadow:0 18px 45px #0009;z-index:120
+}
+.site-nav .nav-group:hover .dropdown,
+.site-nav .nav-group:focus-within .dropdown{display:block}
+.site-nav .dropdown a{
+  display:block;padding:10px 12px;border-bottom:1px solid #142238;
+  font-size:12px;color:#c3cfdd;white-space:nowrap
+}
+.site-nav .dropdown a:last-child{border-bottom:0}
+.site-nav .dropdown a:hover{background:#0a1728;color:#fff}
+.feature-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px}
+.feature-list .feature{
+  border:1px solid var(--line);background:var(--panel);padding:22px
+}
+.feature-list .feature h3{font-size:16px;margin:0 0 8px}
+.feature-list .feature p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+@media(max-width:900px){
+  .site-nav .dropdown{position:static;display:block!important;border:0;box-shadow:none;padding:6px 0;background:transparent}
+  .site-nav .dropdown a{padding:8px 0 8px 16px}
+  .feature-list{grid-template-columns:1fr}
+}
