@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ragner AI Website Builder</title>
+  <meta name="description" content="Tell Ragner about your business and get a website plan in minutes." />
+  <style>
+    :root{
+      --navy:#071b3a;
+      --blue:#0b4da2;
+      --cyan:#16bfe6;
+      --light:#eef7ff;
+      --text:#10233f;
+      --muted:#60708a;
+      --white:#ffffff;
+      --line:#d8e6f5;
+      --success:#0c8b65;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#f8fcff 0%,#edf7ff 100%);
+    }
+    .nav{
+      background:var(--navy);
+      padding:18px 7%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+    .logo{color:#fff;text-decoration:none;font-size:25px;font-weight:800;letter-spacing:.5px}
+    .logo span{color:var(--cyan)}
+    .nav a.button-small{
+      color:#fff;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.35);
+      padding:10px 16px;
+      border-radius:8px;
+      font-weight:bold;
+    }
+    .hero{
+      padding:78px 7% 54px;
+      background:radial-gradient(circle at 80% 20%,#1666bc 0%,var(--navy) 48%,#06152e 100%);
+      color:#fff;
+      overflow:hidden;
+    }
+    .tag{
+      display:inline-block;
+      background:rgba(22,191,230,.18);
+      color:#80eaff;
+      border:1px solid rgba(128,234,255,.28);
+      padding:9px 14px;
+      border-radius:30px;
+      font-size:13px;
+      font-weight:bold;
+      letter-spacing:.5px;
+    }
+    h1{
+      font-size:clamp(38px,5vw,67px);
+      line-height:1.05;
+      max-width:840px;
+      margin:22px 0 17px;
+    }
+    .hero p{font-size:20px;line-height:1.6;max-width:690px;color:#cce7ff}
+    .hero-points{
+      display:flex;flex-wrap:wrap;gap:13px;margin-top:29px;
+    }
+    .hero-points div{
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:9px;
+      padding:12px 15px;
+      color:#dff4ff;
+      background:rgba(255,255,255,.05);
+    }
+    .section{padding:65px 7%}
+    .intro{text-align:center;max-width:730px;margin:0 auto 38px}
+    .intro h2{font-size:38px;margin:0 0 13px}
+    .intro p{color:var(--muted);font-size:18px;line-height:1.6;margin:0}
+    .builder-grid{
+      max-width:1180px;margin:auto;display:grid;
+      grid-template-columns:1.05fr .95fr;gap:28px;align-items:start;
+    }
+    .panel,.preview-card{
+      background:var(--white);border:1px solid var(--line);
+      border-radius:18px;padding:28px;
+      box-shadow:0 12px 32px rgba(11,77,162,.08);
+    }
+    .panel h3,.preview-card h3{margin:0 0 8px;font-size:28px}
+    .small-text{color:var(--muted);line-height:1.5;margin:0 0 23px}
+    .step{color:var(--blue);font-size:13px;font-weight:bold;letter-spacing:1px;margin-bottom:10px}
+    label{display:block;font-size:14px;font-weight:bold;margin:17px 0 7px}
+    input,select,textarea{
+      width:100%;padding:14px;border:1px solid #cbdced;border-radius:9px;
+      font:inherit;color:var(--text);background:#fbfdff;
+    }
+    textarea{min-height:90px;resize:vertical}
+    input:focus,select:focus,textarea:focus{outline:3px solid rgba(22,191,230,.18);border-color:var(--cyan)}
+    .two-inputs{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .checks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+    .check{
+      border:1px solid var(--line);padding:11px;border-radius:8px;
+      display:flex;align-items:center;gap:8px;font-size:14px;
+    }
+    .check input{width:auto;margin:0}
+    .primary{
+      width:100%;border:0;border-radius:9px;background:var(--blue);color:white;
+      padding:15px 20px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:22px;
+    }
+    .primary:hover{background:#083d82}
+    .secondary{
+      display:block;text-align:center;margin-top:12px;color:var(--blue);
+      font-weight:bold;font-size:14px;cursor:pointer;background:none;border:0;width:100%;
+    }
+    .preview-card{background:linear-gradient(160deg,#ffffff 0%,#eaf7ff 100%);min-height:620px}
+    .preview-top{
+      display:flex;justify-content:space-between;align-items:center;
+      border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:25px;
+    }
+    .preview-logo{font-size:22px;font-weight:800;color:var(--navy)}
+    .preview-logo span{color:var(--cyan)}
+    .dots{color:#9eb4c9;font-size:20px;letter-spacing:4px}
+    .fake-hero{
+      background:linear-gradient(135deg,var(--navy),var(--blue));
+      padding:30px;border-radius:13px;color:#fff;
+    }
+    .fake-hero .mini{color:#7ce7ff;font-size:12px;font-weight:bold;letter-spacing:1px}
+    .fake-hero h4{font-size:30px;line-height:1.1;margin:12px 0}
+    .fake-hero p{color:#d9edff;line-height:1.5;margin:0}
+    .fake-btn{
+      display:inline-block;background:var(--cyan);color:var(--navy);font-weight:bold;
+      padding:11px 15px;border-radius:7px;margin-top:18px;font-size:14px;
+    }
+    .mini-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+    .mini-card{background:#fff;border:1px solid var(--line);border-radius:9px;padding:13px;font-size:13px}
+    .mini-card strong{display:block;color:var(--blue);font-size:20px;margin-bottom:5px}
+    .result{display:none;margin-top:20px;background:#e9fff6;border:1px solid #b6ead7;border-radius:10px;padding:16px;color:#126047;line-height:1.5}
+    .how{background:#fff}
+    .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1120px;margin:auto}
+    .how-card{padding:27px;background:#f7fbff;border:1px solid var(--line);border-radius:15px}
+    .number{color:var(--cyan);font-size:33px;font-weight:800}
+    .how-card h3{font-size:22px;margin:10px 0}
+    .how-card p{margin:0;color:var(--muted);line-height:1.55}
+    footer{background:var(--navy);color:#b7d3ee;padding:26px 7%;text-align:center;font-size:14px}
+    @media(max-width:850px){
+      .builder-grid,.how-grid{grid-template-columns:1fr}
+      .preview-card{min-height:auto}
+    }
+    @media(max-width:520px){
+      .section,.hero{padding-left:5%;padding-right:5%}
+      .two-inputs,.checks{grid-template-columns:1fr}
+      .mini-cards{grid-template-columns:1fr}
+      .nav{padding-left:5%;padding-right:5%}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="logo" href="index.html">RAG<span>NER</span></a>
+    <a class="button-small" href="index.html">Back to Home</a>
+  </nav>
+
+  <header class="hero">
+    <span class="tag">RAGNER AI WEBSITE BUILDER</span>
+    <h1>Tell us about your business. Get your website plan in minutes.</h1>
+    <p>Answer a few simple questions. Ragner will create a clear website plan for your business and our team will contact you with the next step.</p>
+    <div class="hero-points">
+      <div>✓ Custom website plan</div>
+      <div>✓ Mobile-friendly design</div>
+      <div>✓ Built for your business goals</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="intro">
+        <h2>Build your website idea</h2>
+        <p>No technical knowledge needed. Just tell us about your business.</p>
+      </div>
+
+      <div class="builder-grid">
+        <form class="panel" action="https://formsubmit.co/puskardas662@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Ragner AI Website Builder Lead">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+
+          <div class="step">STEP 1 OF 1</div>
+          <h3>Tell us about your business</h3>
+          <p class="small-text">We will use these details to prepare your website plan.</p>
+
+          <div class="two-inputs">
+            <div>
+              <label for="name">Your name</label>
+              <input id="name" name="Name" type="text" placeholder="Your full name" required>
+            </div>
+            <div>
+              <label for="email">Your email</label>
+              <input id="email" name="Email" type="email" placeholder="you@email.com" required>
+            </div>
+          </div>
+
+          <label for="business">Business name</label>
+          <input id="business" name="Business Name" type="text" placeholder="Example: Smith Fitness" required>
+
+          <label for="type">What type of business do you have?</label>
+          <select id="type" name="Business Type" required>
+            <option value="">Select your business type</option>
+            <option>Restaurant or café</option>
+            <option>Gym or fitness business</option>
+            <option>Real estate business</option>
+            <option>Consulting or professional service</option>
+            <option>Beauty, salon or spa</option>
+            <option>Home service business</option>
+            <option>Online store</option>
+            <option>Other</option>
+          </select>
+
+          <label for="city">City or service area</label>
+          <input id="city" name="City / Service Area" type="text" placeholder="Example: Dallas, Texas" required>
+
+          <label for="services">What do you offer?</label>
+          <textarea id="services" name="Services" placeholder="Example: Personal training, weight-loss plans and group classes" required></textarea>
+
+          <label>What should your website include?</label>
+          <div class="checks">
+            <label class="check"><input type="checkbox" name="Website Features" value="Contact form"> Contact form</label>
+            <label class="check"><input type="checkbox" name="Website Features" value="WhatsApp button"> WhatsApp button</label>
+            <label class="check"><input type="checkbox" name="Website Features" value="Online booking"> Online booking</label>
+            <label class="check"><input type="checkbox" name="Website Features" value="Online payment"> Online payment</label>
+            <label class="check"><input type="checkbox" name="Website Features" value="Google map"> Google map</label>
+            <label class="check"><input type="checkbox" name="Website Features" value="Customer reviews"> Customer reviews</label>
+          </div>
+
+          <button class="secondary" type="button" onclick="createPreview()">See My Website Preview ↓</button>
+          <button class="primary" type="submit">Send My Website Request</button>
+        </form>
+
+        <div class="preview-card">
+          <div class="preview-top">
+            <div class="preview-logo" id="previewLogo">Your<span>Business</span></div>
+            <div class="dots">•••</div>
+          </div>
+          <div class="fake-hero">
+            <div class="mini">WELCOME TO</div>
+            <h4 id="previewTitle">Your Business Website</h4>
+            <p id="previewText">A professional website made to help more people find your business and contact you easily.</p>
+            <span class="fake-btn">Get Started Today</span>
+          </div>
+          <div class="mini-cards">
+            <div class="mini-card"><strong>01</strong>About Us</div>
+            <div class="mini-card"><strong>02</strong>Our Services</div>
+            <div class="mini-card"><strong>03</strong>Contact Us</div>
+          </div>
+          <div class="result" id="result"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section how">
+      <div class="intro">
+        <h2>What happens next?</h2>
+      </div>
+      <div class="how-grid">
+        <div class="how-card">
+          <div class="number">01</div>
+          <h3>You share your idea</h3>
+          <p>Tell us what your business does and what you want on the website.</p>
+        </div>
+        <div class="how-card">
+          <div class="number">02</div>
+          <h3>We plan your website</h3>
+          <p>Ragner prepares the best page structure and website idea for you.</p>
+        </div>
+        <div class="how-card">
+          <div class="number">03</div>
+          <h3>We contact you</h3>
+          <p>Our team discusses your design, price and next steps with you.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Ragner. Websites built for growing businesses.</footer>
+
+  <script>
+    function createPreview() {
+      const business = document.getElementById('business').value.trim();
+      const type = document.getElementById('type').value;
+      const city = document.getElementById('city').value.trim();
+      const services = document.getElementById('services').value.trim();
+      const result = document.getElementById('result');
+
+      if (!business || !type || !city || !services) {
+        result.style.display = 'block';
+        result.style.background = '#fff5f5';
+        result.style.borderColor = '#f4c2c2';
+        result.style.color = '#a03535';
+        result.innerHTML = '<strong>Please complete your business details first.</strong><br>Then click “See My Website Preview” again.';
+        return;
+      }
+
+      document.getElementById('previewLogo').innerHTML = business.replace(/ /g, '<span> </span>');
+      document.getElementById('previewTitle').textContent = business + ' — ' + type;
+      document.getElementById('previewText').textContent =
+        'Helping people in ' + city + ' discover ' + services + '.';
+
+      result.style.display = 'block';
+      result.style.background = '#e9fff6';
+      result.style.borderColor = '#b6ead7';
+      result.style.color = '#126047';
+      result.innerHTML = '<strong>Your website plan is ready!</strong><br>Recommended pages: Home, About, Services, Reviews and Contact. Send your request and the Ragner team will contact you.';
+    }
+  </script>
+</body>
+</html>
