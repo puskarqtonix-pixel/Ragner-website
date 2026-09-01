@@ -239,3 +239,9 @@ text-decoration:none!important;
 letter-spacing:.4px!important;
 }
 .home-hero{position:relative!important;}
+
+
+.hero-hotspots a[href="ai-website-builder.html"]{
+top:72%!important;
+bottom:auto!important;
+}
